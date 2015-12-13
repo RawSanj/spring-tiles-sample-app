@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+	
+	<!--  Template for Login and Register Page	 -->
+	<definition name="page" template="/WEB-INF/layout/page.jsp">
+		<put-list-attribute name="stylesheets">
+			<add-attribute value="/resources/css/AdminLTE.min.css" />
+        </put-list-attribute>
+        <put-list-attribute name="javascripts">
+            <add-attribute value="/resources/js/main.js" />
+        </put-list-attribute>
+	</definition>
+
+	<definition name="login" extends="page">
+		<put-attribute name="title" value="Login" />
+		<put-attribute name="body" value="/WEB-INF/jsp/login.jsp" />
+		<put-attribute name="current" value="login" />
+	</definition>
+	
+	<definition name="register" extends="page">
+		<put-attribute name="title" value="User Registeration" />
+		<put-attribute name="body" value="/WEB-INF/jsp/register.jsp" />
+		<put-attribute name="current" value="register" />
+	</definition>	
+	
+	<!--  Template for all the Common Page	 -->
+	<definition name="common" template="/WEB-INF/layout/common.jsp">
+		<put-attribute name="footer" value="/WEB-INF/layout/footer.jsp" />
+		<put-list-attribute name="stylesheets">
+			<add-attribute value="/resources/css/AdminLTE.min.css" />
+<!--             <add-attribute value="/resources/css/skins/skin-purple.min.css" /> -->
+<!--             <add-attribute value="/resources/css/skins/skin-purple.min.css" /> -->
+<!--             <add-attribute value="/resources/css/skins/skin-black.min.css" /> -->
+<!--             <add-attribute value="/resources/css/skins/skin-blue.min.css" /> -->
+<!--             <add-attribute value="/resources/css/skins/skin-red.min.css" /> -->
+<!--             <add-attribute value="/resources/css/skins/skin-yellow.min.css" /> -->
+<!--             <add-attribute value="/resources/css/skins/skin-green.min.css" /> -->
+            <add-attribute value="/resources/css/skins/_all-skins.min.css" />
+        </put-list-attribute>
+        <put-list-attribute name="javascripts">
+            <add-attribute value="/resources/js/app.min.js" />
+            <add-attribute value="/resources/js/demo.js" />
+        </put-list-attribute>
+	</definition>
+
+	
+	<!-- 	Mapping for main contents -->
+	<definition name="account" extends="common">
+		<put-attribute name="title" value="Tracker Tool" />
+		<put-attribute name="body" value="/WEB-INF/jsp/account.jsp" />
+		<put-attribute name="current" value="account" />
+	</definition>
+
+	<definition name="upload" extends="common">
+		<put-attribute name="title" value="Tracker Tool" />
+		<put-attribute name="body" value="/WEB-INF/jsp/upload.jsp" />
+		<put-attribute name="upload" value="upload" />
+	</definition>
+	
+	
+	
+	
+	
+	
+		
+	<!-- 	Mapping for Error Pages -->
+	<definition name="error404" extends="common">
+		<put-attribute name="title" value="Tracker Tool" />
+		<put-attribute name="body" value="/WEB-INF/jsp/errorpages/page_404.jsp" />
+	</definition>
+	<definition name="error500" extends="common">
+		<put-attribute name="title" value="Tracker Tool" />
+		<put-attribute name="body" value="/WEB-INF/jsp/errorpages/page_500.jsp" />
+	</definition>	
+	
+	
+
+
+</tiles-definitions>
