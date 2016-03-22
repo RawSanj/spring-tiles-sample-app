@@ -30,7 +30,9 @@
           </div>
         </div>
         <div class="box-body">
-          Start creating your amazing application!
+          Ajax Upload : 
+		  <input type="file" name="file" id="fileLoader" /> 
+		  <input type="button" id="fileSubmit" value="Upload"/>
         </div>
         <!-- /.box-body -->
         <div class="box-footer">
@@ -43,4 +45,55 @@
     </section>
     <!-- /.content -->
   </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.2/jquery.min.js"></script>
+<script type="text/javascript">
 
+var files = [];
+	
+	$(document).on("change", "#fileLoader", function(event) {
+     files=event.target.files;
+    })
+
+	$(document).on("click", "#fileSubmit", function() {
+     	processUpload();
+    })
+
+	function processUpload(){
+		
+		alert("Starting Upload....");
+        /* var oMyForm = new FormData();
+        oMyForm.append("imageFile", files[0]);
+		$.ajax({dataType : 'json',
+		       url : "/account/upload/",
+		       data : oMyForm,
+		       type : "POST",
+		       enctype: 'multipart/form-data',
+		       processData: false, 
+		       contentType:false,
+		       success : function(result) {
+		    	   alert("Upload Successful....");
+		       },
+		       error : function(result){
+		    	   alert("Upload Failed - Or Access Denied");
+		       }
+		   }); */
+		   
+		var fd = new FormData(); 
+		fd.append( 'imageFile', files[0] ); 
+
+		$.ajax({ 
+			url: '/account/upload/', 
+			data: fd, 
+			processData: false, 
+			contentType: false, 
+			type: 'POST', 
+			success: function(data){ 
+				alert("Upload Successful....");
+			},
+			error : function(result){
+	    	   alert("Upload Failed - Or Access Denied");
+	       	}
+		});
+     }
+
+</script>

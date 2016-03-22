@@ -47,6 +47,9 @@ public class UserController {
 	@Transactional
 	@RequestMapping(value="/upload", method = RequestMethod.POST)
 	public String handleFormUpload(@RequestParam("imageFile") MultipartFile file, Principal principal) {
+		
+		System.out.println("Uploading FIle....!");
+		
 	    String webappRoot = servletContext.getRealPath("/");
 	    String LoggedInUser = principal.getName();
 	    User user = userService.findLoggedInUser(LoggedInUser);

@@ -12,7 +12,7 @@
 		
 		<intercept-url pattern="/users**" access="hasRole('ROLE_ADMIN')" />
 		<intercept-url pattern="/users/**" access="hasRole('ROLE_ADMIN')" />
-		<intercept-url pattern="/account**" access="hasRole('ROLE_USER')" />
+		<intercept-url pattern="/account/upload/**" access="hasRole('ROLE_ADMIN')" />
 		<intercept-url pattern="/account/**" access="hasRole('ROLE_USER')" />
 		<form-login login-page="/login" default-target-url="/account" authentication-failure-url="/login?success=false"/>
 		<logout logout-url="/logout" logout-success-url="/login"/>

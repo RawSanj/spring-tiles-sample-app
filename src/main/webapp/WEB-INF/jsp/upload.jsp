@@ -50,8 +50,7 @@
 				</div>
 				<button type="submit" class="btn btn-default">Submit</button>
 		  </form:form>
-          
-
+		  
         </div>
         <!-- /.box-body -->
         <div class="box-footer">
@@ -64,4 +63,3 @@
     </section>
     <!-- /.content -->
   </div>
-
