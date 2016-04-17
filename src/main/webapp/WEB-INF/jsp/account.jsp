@@ -4,8 +4,8 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Blank page - ${user.firstName}
-        <small>it all starts here</small>
+        AJAX Calls
+        <small>Some Ajax Stuff here....</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -20,7 +20,7 @@
       <!-- Default box -->
       <div class="box">
         <div class="box-header with-border">
-          <h3 class="box-title">Title</h3>
+          <h3 class="box-title">Ajax Section</h3>
 
           <div class="box-tools pull-right">
             <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
@@ -30,9 +30,20 @@
           </div>
         </div>
         <div class="box-body">
-          Ajax Upload : 
-		  <input type="file" name="file" id="fileLoader" /> 
-		  <input type="button" id="fileSubmit" value="Upload"/>
+          <label for="exampleInputFile">Upload Profile Image</label>
+		  <input type="file" name="file" id="fileLoader" /> <br>
+		  <input type="button" class="btn btn-success" id="fileSubmit" value="Upload"/>
+		  <br><hr>
+		  <input type="button" class="btn btn-danger" id="getStudent" value="Get Student"/>
+		  <br><br>
+		  
+		  <div class="box box-widget widget-user" id="setStudent">
+            <div class="widget-user-header bg-yellow text-center">
+              <h2 class="widget-user-username"></h2><br>
+              <h4 class="widget-user-desc"></h4>
+            </div>
+          </div>
+          
         </div>
         <!-- /.box-body -->
         <div class="box-footer">
@@ -48,7 +59,13 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.2/jquery.min.js"></script>
 <script type="text/javascript">
 
-var files = [];
+$( document ).ready(function() {
+    
+	$("#setStudent").hide();
+	
+	console.log($("#setStudent"));
+
+	var files = [];
 	
 	$(document).on("change", "#fileLoader", function(event) {
      files=event.target.files;
@@ -61,23 +78,7 @@ var files = [];
 	function processUpload(){
 		
 		alert("Starting Upload....");
-        /* var oMyForm = new FormData();
-        oMyForm.append("imageFile", files[0]);
-		$.ajax({dataType : 'json',
-		       url : "/account/upload/",
-		       data : oMyForm,
-		       type : "POST",
-		       enctype: 'multipart/form-data',
-		       processData: false, 
-		       contentType:false,
-		       success : function(result) {
-		    	   alert("Upload Successful....");
-		       },
-		       error : function(result){
-		    	   alert("Upload Failed - Or Access Denied");
-		       }
-		   }); */
-		   
+    	   
 		var fd = new FormData(); 
 		fd.append( 'imageFile', files[0] ); 
 
@@ -95,5 +96,27 @@ var files = [];
 	       	}
 		});
      }
+	
+	$(document).on("click", "#getStudent", function() {
+		getNewStudent();
+    })
+	
+	function getNewStudent(){
+		$.ajax({ 
+			url: '/account/ajaxreturn/', 
+			type: 'POST', 
+			success: function(data){ 
+				console.log(data);
+				$("#setStudent .widget-user-username").append(data.firstName+" "+data.lastName);
+				$("#setStudent .widget-user-desc").append("Studying : "+ data.course);
+				$("#setStudent").show();
+			},
+			error : function(result){
+	    	   alert("Getting Student Failed");
+	       	}
+		});
+     }	
+	
+});
 
 </script>
