@@ -27,11 +27,41 @@ $ git clone https://github.com/RawSanj/spring-tiles-sample-app.git
 ```
 Run this application using embedded Jetty Server and HSQL in-memory DB Server: 
 ```sh
+
 mvn -P dev jetty:run -Dspring.profiles.active="dev"
 ```
 Or run this application using embedded Tomcat7 server(or Jetty) and PostgreSql DB Server: 
 ```sh
 mvn -P dev tomcat7:run -Dspring.profiles.active="prod"
+```
+
+
+### Run in Docker
+
+#### Run locally:
+
+Build docker image:
+```sh
+$ docker build . -t spring-tiles-sample-app
+```
+
+Run docker image:
+```sh
+$ docker run -d -p 8080:8080 spring-tiles-sample-app
+```
+
+#### Run on Cloud:
+
+Try http://play-with-docker.com for running docker on browser without any local setup.
+
+Pull the docker image:
+```sh
+$ docker pull rawsanj/spring-tiles-sample-app
+```
+
+Run the docker image:
+```sh
+$ docker run -d -p 8080:8080 rawsanj/spring-tiles-sample-app
 ```
 
 ### Tools
