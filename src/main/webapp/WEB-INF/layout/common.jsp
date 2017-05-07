@@ -71,7 +71,14 @@
                   <li><!-- start message -->
                     <a href="#">
                       <div class="pull-left">
-                        <img src='<spring:url value="/resources/profile-pictures/${user.profileImage}" />' class="img-circle" alt="User Image">
+                        <c:choose>
+                            <c:when test="${user.profileImage!=null}">
+                                <img src='<spring:url value="/resources/profile-pictures/${user.profileImage}" />' class="img-circle" alt="User Image">
+                            </c:when>
+                            <c:otherwise>
+                                <img src='<spring:url value="/resources/profile-pictures/img.jpg" />' class="img-circle" alt="User Image">
+                            </c:otherwise>
+                        </c:choose>
                       </div>
                       <h4>
                         Support Team
@@ -142,14 +149,27 @@
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="<spring:url value='/resources/profile-pictures/${user.profileImage}' />" class="user-image" alt="User Image">
+              <c:choose>
+                  <c:when test="${user.profileImage!=null}">
+                      <img src='<spring:url value="/resources/profile-pictures/${user.profileImage}" />' class="user-image" alt="User Image">
+                  </c:when>
+                  <c:otherwise>
+                      <img src='<spring:url value="/resources/profile-pictures/img.jpg" />' class="user-image" alt="User Image">
+                  </c:otherwise>
+              </c:choose>
               <span class="hidden-xs"><c:out value="${user.firstName} ${user.lastName}" /></span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
-                <img src='<spring:url value="/resources/profile-pictures/${user.profileImage}" />' class="img-circle" alt="User Image">
-
+                <c:choose>
+                    <c:when test="${user.profileImage!=null}">
+                        <img src='<spring:url value="/resources/profile-pictures/${user.profileImage}" />' class="img-circle" alt="User Image">
+                    </c:when>
+                    <c:otherwise>
+                        <img src='<spring:url value="/resources/profile-pictures/img.jpg" />' class="img-circle" alt="User Image">
+                    </c:otherwise>
+                </c:choose>
                 <p>
                 <c:out value="${user.firstName} ${user.lastName}" />
                   <small>Member since Nov. 2012</small>
@@ -199,7 +219,14 @@
       <!-- Sidebar user panel -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="<spring:url value='/resources/profile-pictures/${user.profileImage}'/>" class="img-circle" alt="User Image">
+          <c:choose>
+              <c:when test="${user.profileImage!=null}">
+                  <img src='<spring:url value="/resources/profile-pictures/${user.profileImage}" />' class="img-circle" alt="User Image">
+              </c:when>
+              <c:otherwise>
+                  <img src='<spring:url value="/resources/profile-pictures/img.jpg" />' class="img-circle" alt="User Image">
+              </c:otherwise>
+          </c:choose>
         </div>
         <div class="pull-left info">
           <p><c:out value="${user.firstName} ${user.lastName}" /></p>

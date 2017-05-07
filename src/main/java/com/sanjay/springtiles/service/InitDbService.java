@@ -47,6 +47,7 @@ public class InitDbService {
 			roles.add(roleAdmin);
 			roles.add(roleUser);
 			userAdmin.setRoles(roles);
+			userAdmin.setProfileImage("ProfileImageadmin.jpg");
 			userRepository.save(userAdmin);
 		}
 

@@ -8,14 +8,13 @@
 
 	<global-method-security pre-post-annotations="enabled" />
 	<http pattern="/resources/**" security="none"/>
+
 	<http use-expressions="true">
-		
-		<intercept-url pattern="/" access="hasAnyRole('ROLE_ADMIN', 'ROLE_USER')" />
+		<intercept-url pattern="/" access="isAnonymous()" />
 		<intercept-url pattern="/account/upload/**" access="hasRole('ROLE_ADMIN')" />
 		<intercept-url pattern="/account/**" access="hasRole('ROLE_USER')" />
 		<form-login login-page="/login" default-target-url="/account" authentication-failure-url="/login?success=false"/>
 		<logout logout-url="/logout" logout-success-url="/login"/>
-
 	</http>
 
 	<authentication-manager>
