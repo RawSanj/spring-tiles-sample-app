@@ -27,7 +27,6 @@ $ git clone https://github.com/RawSanj/spring-tiles-sample-app.git
 ```
 Run this application using embedded Jetty Server and HSQL in-memory DB Server: 
 ```sh
-
 mvn -P dev jetty:run -Dspring.profiles.active="dev"
 ```
 Or run this application using embedded Tomcat7 server(or Jetty) and PostgreSql DB Server: 
@@ -39,6 +38,11 @@ mvn -P dev tomcat7:run -Dspring.profiles.active="prod"
 ### Run in Docker
 
 #### Run locally:
+
+Build the WAR file:
+```sh
+$ mvn package
+```
 
 Build docker image:
 ```sh
